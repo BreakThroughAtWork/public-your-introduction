@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Story — Undeniable Method</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     STYLES
+════════════════════════════════════════════════════════════════ -->
+<style>
+:root{
+  --red:#c92a2a;--red-dark:#a82020;--red-pale:#fff0f0;
+  --navy:#2e3a59;--navy-mid:#3f507b;--navy-light:#94a3c8;--navy-pale:#eef1f8;
+  --gold:#f4b942;--gold-dark:#c8930a;--gold-light:#f9d794;--gold-pale:#fffbf0;
+  --cream:#f5f0ec;--cream-dark:#e8e0d8;
+  --charcoal:#2d2d2d;--gray:#6b6570;--gray-light:#bdb8bc;
+  --white:#ffffff;--green:#2a7a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);font-family:'Nunito',sans-serif;color:var(--charcoal);min-height:100vh;}
+.sunburst{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg at 50% -5%,rgba(244,185,66,.07) 0deg 6deg,transparent 6deg 12deg);}
+.wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 16px 80px;}
+
+/* ── HEADER ── */
+.header{background:var(--navy);margin:0 -16px;padding:18px 24px 22px;position:relative;overflow:hidden;text-align:center;}
+.header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:6px;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 20px,var(--red) 20px 40px);}
+.hdr-eye{font-size:10px;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:3px;}
+.hdr-title{font-family:'Bangers',cursive;font-size:48px;letter-spacing:5px;color:white;line-height:1;text-shadow:3px 3px 0 rgba(0,0,0,.25);}
+.hdr-sub{font-size:12px;font-weight:700;color:rgba(255,255,255,.55);margin-top:5px;}
+
+/* ── PROGRESS ── */
+.prog-wrap{padding:16px 0 0;}
+.prog-steps{display:flex;background:var(--white);border:2px solid var(--cream-dark);border-radius:50px;overflow:hidden;padding:4px;gap:0;}
+.prog-step{flex:1;text-align:center;font-size:9px;font-weight:800;letter-spacing:.5px;padding:7px 2px;border-radius:50px;
+  color:var(--gray-light);transition:all .3s;text-transform:uppercase;}
+.prog-step.done{color:var(--navy);}
+.prog-step.active{background:var(--red);color:white;box-shadow:0 2px 8px rgba(201,42,42,.3);}
+
+/* ── SCREENS ── */
+.screen{display:none;padding-top:20px;} .screen.active{display:block;}
+
+/* ── COACH CALLOUT ── */
+.coach-wrap{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;animation:fadeUp .4s ease both;}
+.coach-avatar{width:48px;height:48px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+  box-shadow:0 3px 10px rgba(46,58,89,.25);}
+.coach-bubble{background:var(--white);border:2px solid var(--cream-dark);border-radius:14px 14px 14px 4px;
+  padding:12px 16px;font-size:13px;font-weight:700;color:var(--charcoal);line-height:1.6;position:relative;flex:1;}
+.coach-bubble::before{content:'';position:absolute;left:-10px;top:14px;border:5px solid transparent;
+  border-right-color:var(--cream-dark);}
+.coach-bubble::after{content:'';position:absolute;left:-7px;top:15px;border:4px solid transparent;
+  border-right-color:var(--white);}
+.coach-name{font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);margin-bottom:4px;}
+
+/* ── SCREEN HEADING ── */
+.screen-eyebrow{font-size:10px;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+.stitle{font-family:'Bangers',cursive;font-size:38px;letter-spacing:3px;color:var(--navy);margin-bottom:6px;line-height:1.1;}
+.ssub{font-size:13px;font-weight:700;color:var(--gray);margin-bottom:18px;line-height:1.6;}
+
+/* ── NAME SCREEN ── */
+.name-card{background:var(--white);border:2px solid var(--cream-dark);border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.06);}
+.name-input{width:100%;max-width:320px;background:var(--cream);border:3px solid var(--cream-dark);border-radius:12px;
+  color:var(--charcoal);font-family:'Nunito',sans-serif;font-size:24px;font-weight:800;padding:14px 20px;
+  outline:none;text-align:center;transition:all .2s;display:block;margin:0 auto;}
+.name-input:focus{border-color:var(--gold);background:var(--white);}
+.name-input::placeholder{color:var(--gray-light);font-size:18px;}
+
+/* ── PILLARS ── */
+.pillar-hint{background:var(--gold-pale);border:2px solid var(--gold-light);border-radius:10px;padding:11px 14px;
+  margin-bottom:16px;font-size:12px;font-weight:700;color:var(--navy-mid);line-height:1.6;}
+.pillar-hint strong{color:var(--red);}
+.pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px;}
+.pc{background:var(--white);border:3px solid var(--cream-dark);border-radius:12px;padding:13px;cursor:pointer;
+  transition:all .18s;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.pc.passion::before{background:var(--red);opacity:.3;}
+.pc.principle::before{background:var(--navy);opacity:.3;}
+.pc.practice::before{background:var(--gold-dark);opacity:.4;}
+.pc.other::before{background:var(--gray-light);}
+.pc:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1);}
+.pc.selected.passion{border-color:var(--red);background:#fff5f5;} .pc.selected.passion::before{opacity:1;}
+.pc.selected.principle{border-color:var(--navy);background:var(--navy-pale);} .pc.selected.principle::before{opacity:1;}
+.pc.selected.practice{border-color:var(--gold-dark);background:var(--gold-pale);} .pc.selected.practice::before{opacity:1;}
+.pc.selected.other{border-color:var(--gray);background:#f8f8f8;} .pc.selected.other::before{opacity:1;}
+.pc.disabled{opacity:.3;pointer-events:none;}
+.pc-icon{font-size:24px;margin-bottom:4px;}
+.pc-name{font-family:'Bangers',cursive;font-size:18px;letter-spacing:1.5px;color:var(--charcoal);margin-bottom:2px;}
+.pc-desc{font-size:11px;font-weight:700;color:var(--gray);line-height:1.4;}
+.pc-check{position:absolute;top:10px;right:10px;font-size:14px;opacity:0;transition:opacity .2s;}
+.pc.selected .pc-check{opacity:1;}
+.pillar-note{font-size:12px;font-weight:700;color:var(--gray);text-align:center;margin-top:8px;}
+
+/* ── CATEGORIES ── */
+.psh{display:flex;align-items:center;gap:10px;margin-bottom:10px;margin-top:4px;}
+.psh-icon{font-size:20px;}
+.psh-title{font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px;color:var(--navy);}
+.psh-sub{font-size:11px;font-weight:700;color:var(--gray);}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.cc{background:var(--white);border:2px solid var(--cream-dark);border-radius:12px;padding:13px 13px 11px;cursor:pointer;transition:all .18s;position:relative;}
+.cc:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08);}
+.cc.sel-passion{border-color:var(--red);background:#fff5f5;}
+.cc.sel-principle{border-color:var(--navy);background:var(--navy-pale);}
+.cc.sel-practice{border-color:var(--gold-dark);background:var(--gold-pale);}
+.cc.sel-other{border-color:var(--gray);background:#f8f8f8;}
+.cc-name{font-family:'Bangers',cursive;font-size:17px;letter-spacing:1px;color:var(--charcoal);margin-bottom:3px;}
+.cc-desc{font-size:11px;font-weight:700;color:var(--gray);line-height:1.4;margin-bottom:3px;}
+.cc-ex{font-size:10px;font-weight:600;color:var(--gray-light);font-style:italic;}
+.cc-check{position:absolute;top:9px;right:10px;font-size:13px;opacity:0;transition:opacity .15s;}
+.cc.sel-passion .cc-check,.cc.sel-principle .cc-check,.cc.sel-practice .cc-check,.cc.sel-other .cc-check{opacity:1;}
+
+/* ── CHALLENGES SCREEN ── */
+.challenge-intro{background:var(--navy);color:white;border-radius:12px;padding:16px 18px;margin-bottom:18px;}
+.challenge-intro p{font-size:13px;font-weight:700;line-height:1.7;color:rgba(255,255,255,.85);}
+.challenge-intro strong{color:var(--gold);}
+.chall-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.chc{background:var(--white);border:2px solid var(--cream-dark);border-radius:12px;padding:13px;cursor:pointer;transition:all .18s;position:relative;}
+.chc:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08);}
+.chc.sel{border-color:var(--red);background:var(--red-pale);}
+.chc-name{font-family:'Bangers',cursive;font-size:17px;letter-spacing:1px;color:var(--charcoal);margin-bottom:3px;}
+.chc-desc{font-size:11px;font-weight:700;color:var(--gray);line-height:1.4;margin-bottom:3px;}
+.chc-ex{font-size:10px;font-weight:600;color:var(--gray-light);font-style:italic;}
+.chc-check{position:absolute;top:9px;right:10px;font-size:13px;opacity:0;transition:opacity .15s;}
+.chc.sel .chc-check{opacity:1;}
+.chall-skip{font-size:12px;font-weight:800;color:var(--gray-light);text-align:center;margin-top:4px;cursor:pointer;text-decoration:underline;}
+.chall-skip:hover{color:var(--gray);}
+
+/* ── IDENTITY SCREEN ── */
+.id-primary{background:var(--navy);border-radius:20px;padding:32px 24px 26px;position:relative;overflow:hidden;
+  box-shadow:0 12px 40px rgba(46,58,89,.35);margin-bottom:10px;text-align:center;
+  animation:cardIn .6s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes cardIn{from{opacity:0;transform:scale(.6) rotateY(15deg);}to{opacity:1;transform:scale(1) rotateY(0);}}
+.id-primary::before{content:'';position:absolute;inset:0;
+  background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(244,185,66,.05) 0deg 15deg,transparent 15deg 30deg);}
+.id-eye{font-size:10px;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;position:relative;}
+.id-name{font-family:'Bangers',cursive;font-size:64px;letter-spacing:6px;color:white;line-height:1;
+  text-shadow:3px 3px 0 rgba(0,0,0,.3);position:relative;}
+.id-tagline{font-size:12px;font-weight:700;color:rgba(255,255,255,.65);margin-top:7px;line-height:1.5;position:relative;}
+.id-pills{display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap;position:relative;}
+.id-pill{padding:3px 10px;border-radius:20px;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
+.id-pill.passion{background:rgba(201,42,42,.3);color:#ffaaaa;border:1px solid rgba(201,42,42,.5);}
+.id-pill.principle{background:rgba(148,163,200,.2);color:var(--navy-light);border:1px solid rgba(148,163,200,.3);}
+.id-pill.practice{background:rgba(244,185,66,.2);color:var(--gold-light);border:1px solid rgba(244,185,66,.3);}
+.id-pill.other{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.2);}
+.shift-label{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-align:center;margin:16px 0 10px;}
+.alt-identities{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:14px;}
+.alt-card{background:var(--white);border:2px solid var(--cream-dark);border-radius:12px;padding:12px 16px;
+  cursor:pointer;transition:all .2s;text-align:center;min-width:110px;
+  animation:altIn .4s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes altIn{from{opacity:0;transform:scale(.7) translateY(10px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.alt-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.1);}
+.alt-icon{font-size:20px;margin-bottom:3px;}
+.alt-name{font-family:'Bangers',cursive;font-size:16px;letter-spacing:1px;color:var(--charcoal);}
+.alt-from{font-size:9px;font-weight:700;color:var(--gray-light);letter-spacing:1px;margin-top:2px;}
+.alt-status{font-size:9px;font-weight:800;margin-top:5px;}
+
+/* ── INTROS SCREEN ── */
+.tpl-card{background:var(--white);border:2px solid var(--cream-dark);border-radius:14px;padding:18px 18px 14px;
+  margin-bottom:12px;position:relative;animation:slideUp .4s ease both;}
+.tpl-card:nth-child(2){animation-delay:.1s;}.tpl-card:nth-child(3){animation-delay:.2s;}
+.tpl-ihelp{background:linear-gradient(135deg,var(--gold-pale) 0%,var(--white) 60%);border-color:var(--gold-dark);}
+@keyframes slideUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.tpl-label{font-size:9px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--gray-light);margin-bottom:7px;}
+.tpl-label-ihelp{color:var(--gold-dark)!important;}
+.tpl-text{font-size:15px;font-weight:700;color:var(--charcoal);line-height:1.85;margin-bottom:12px;}
+.fill{background:var(--gold-pale);border:1.5px dashed var(--gold-dark);border-radius:5px;padding:1px 7px;
+  color:var(--gold-dark);cursor:pointer;transition:all .15s;white-space:nowrap;display:inline-block;}
+.fill:hover{background:var(--gold-light);border-style:solid;transform:scale(1.03);}
+.tpl-actions{display:flex;gap:8px;align-items:center;}
+.btn-copy{background:var(--navy);color:white;font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;
+  padding:6px 14px;border:none;border-radius:8px;cursor:pointer;transition:all .15s;letter-spacing:.5px;}
+.btn-copy:hover{background:var(--navy-mid);transform:scale(1.03);}
+.btn-copy.copied{background:var(--green);}
+.tpl-hint{font-size:11px;font-weight:700;color:var(--gray-light);}
+.daily-note{background:var(--navy-pale);border:2px solid var(--navy-light);border-radius:10px;padding:13px 16px;
+  margin-top:14px;font-size:12px;font-weight:700;color:var(--navy-mid);text-align:center;line-height:1.7;}
+.daily-note strong{color:var(--red);}
+
+/* ── SYNONYM POPOVER ── */
+.syn-pop{position:absolute;z-index:200;background:var(--white);border:2px solid var(--navy);border-radius:12px;
+  padding:10px 8px;box-shadow:0 8px 28px rgba(0,0,0,.18);min-width:200px;max-width:280px;
+  animation:popIn .2s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes popIn{from{opacity:0;transform:scale(.8) translateY(-6px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.syn-title{font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);
+  padding:0 8px 6px;border-bottom:1px solid var(--cream-dark);margin-bottom:4px;}
+.syn-opt{padding:7px 10px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;color:var(--charcoal);
+  transition:all .12s;border:1.5px solid transparent;}
+.syn-opt:hover{background:var(--gold-pale);border-color:var(--gold-dark);color:var(--gold-dark);}
+.syn-opt.syn-current{background:var(--gold-pale);color:var(--gold-dark);border-color:var(--gold);}
+.syn-close{position:absolute;top:8px;right:10px;font-size:13px;cursor:pointer;color:var(--gray-light);}
+.syn-close:hover{color:var(--charcoal);}
+
+/* ── NAV ── */
+.nav-row{display:flex;gap:10px;align-items:center;margin-top:20px;}
+.btn-next{background:var(--red);color:white;font-family:'Bangers',cursive;font-size:20px;letter-spacing:3px;
+  padding:11px 30px;border:none;border-radius:10px;cursor:pointer;transition:all .18s;
+  box-shadow:0 4px 0 var(--red-dark);}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--red-dark);}
+.btn-next:active{transform:translateY(2px);box-shadow:0 2px 0 var(--red-dark);}
+.btn-next:disabled{opacity:.35;pointer-events:none;}
+.btn-back{background:transparent;color:var(--gray);border:2px solid var(--cream-dark);font-family:'Nunito',sans-serif;
+  font-size:13px;font-weight:800;padding:11px 16px;border-radius:10px;cursor:pointer;transition:all .15s;}
+.btn-back:hover{border-color:var(--gray);color:var(--charcoal);}
+.btn-restart{background:var(--red-pale);color:var(--red);border:2px solid #ffcdd2;font-family:'Nunito',sans-serif;
+  font-size:12px;font-weight:800;padding:9px 16px;border-radius:10px;cursor:pointer;margin-left:auto;}
+.btn-restart:hover{background:#ffd0d0;}
+.hi-box{background:var(--gold-pale);border:2px solid var(--gold-light);border-radius:10px;padding:11px 14px;
+  margin-bottom:12px;font-size:13px;font-weight:700;color:var(--charcoal);line-height:1.6;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--cream-dark);border-radius:3px;}
+@media(max-width:480px){
+  .pillar-grid,.cat-grid,.chall-grid{grid-template-columns:1fr;}
+  .id-name{font-size:48px;} .btn-next{font-size:17px;padding:10px 22px;}
+}
+</style>
+</head>
+<body>
+<div class="sunburst"></div>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="hdr-eye">Undeniable Method</div>
+  <div class="hdr-title">YOUR STORY</div>
+  <div class="hdr-sub" id="hdrSub">Build your introduction · Free forever</div>
+</div>
+
+<!-- PROGRESS -->
+<div class="prog-wrap">
+  <div class="prog-steps" id="progSteps"></div>
+</div>
+
+<!-- SCREENS (injected by JS) -->
+<div id="screens"></div>
+
+</div><!-- /wrap -->
+
+<!-- SYNONYM POPOVER (singleton) -->
+<div class="syn-pop" id="synPop" style="display:none;">
+  <div class="syn-title">CHOOSE YOUR WORDING</div>
+  <span class="syn-close" id="synClose">✕</span>
+  <div id="synList"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CONFIG  ← edit this block to change copy, data, or coach lines
+     All pillars, categories, challenges, templates, and screen copy
+     live here. Rendering logic below never needs to change.
+════════════════════════════════════════════════════════════════ -->
+<script>
+/* ─────────────────────────────────────────────────────────────
+   FEATURE FLAGS  (set via URL params: ?tier=paid&coach=direct)
+───────────────────────────────────────────────────────────── */
+const PARAMS = new URLSearchParams(location.search);
+const CFG = {
+  tier:      PARAMS.get('tier')  || 'free',   // 'free' | 'paid'
+  coachId:   PARAMS.get('coach') || 'warm',   // 'warm' | 'direct' | 'reflective'
+  maxPillars: 3,
+  maxCats:    2,
+  maxChallenges: 2,
+};
+
+/* ─────────────────────────────────────────────────────────────
+   COACH CONFIG
+   Each screen key maps to lines per coach voice.
+   Add coaches here — rendering reads them automatically.
+───────────────────────────────────────────────────────────── */
+const COACHES = {
+  warm: {
+    name: 'Your Guide',
+    avatar: '🌟',
+    lines: {
+      s1: "Hey! I'm so glad you're here. Let's start simple — what's your name?",
+      s2: "Your pillars give your story its structure. Pick what feels true, not what sounds impressive.",
+      s3: "Now let's get specific. These categories help others understand exactly what you do and why.",
+      s4: "This is you. Own it. Which identity opens the door to your story right now?",
+      s5: "Every story has a villain. What forces does your work push back against?",
+      s6: "Here it is — your story, in your words. These are yours to use, share, and build from.",
+    }
+  },
+  direct: {
+    name: 'Coach Mode',
+    avatar: '🎯',
+    lines: {
+      s1: "Let's build your story. First — your name.",
+      s2: "Pick your pillars. You need at least one identity pillar: Passion, Principle, or Practice.",
+      s3: "Choose categories that are actually true for you. Two per pillar, max.",
+      s4: "Lead with your strongest identity. You can always switch it for different rooms.",
+      s5: "Name what you work against. It makes your story undeniable.",
+      s6: "Your intros are ready. Copy, use, and come back tomorrow for fresh options.",
+    }
+  },
+  reflective: {
+    name: 'Reflection Guide',
+    avatar: '🪞',
+    lines: {
+      s1: "Before we build your story, let's start with the most important word in it — your name.",
+      s2: "Which of these pillars have always been part of how you work, even when no one named them?",
+      s3: "What feels most true — not most impressive, not most professional — most true?",
+      s4: "If someone who knew your work deeply had to describe you in one word, which of these would they choose?",
+      s5: "What have you been working against your whole career — even before you had language for it?",
+      s6: "Read these slowly. Notice which one feels like something you could actually say out loud.",
+    }
+  }
+};
+
+/* ─────────────────────────────────────────────────────────────
+   SCREEN COPY CONFIG
+   Each screen has: eyebrow, title, sub, and a next button label.
+───────────────────────────────────────────────────────────── */
+const SCREENS_CFG = [
+  null, // 1-indexed
+  {
+    id: 's1', prog: 'You',
+    eyebrow: 'Step 1 of 6',
+    title: "Who Are You?",
+    sub: null,
+    next: "Let's Go →",
+  },
+  {
+    id: 's2', prog: 'Pillars',
+    eyebrow: 'The Foundation',
+    title: "Your Story Pillars",
+    sub: "These six pillars give your story structure. Pick up to 3 — but you need at least one identity pillar: <strong style='color:var(--red)'>Passion, Principle, or Practice.</strong>",
+    next: "Build My Story →",
+  },
+  {
+    id: 's3', prog: 'Story',
+    eyebrow: 'Getting Specific',
+    title: "Your Story Details",
+    sub: "Choose what feels most like you within each pillar. Pick up to 2 per pillar.",
+    next: "Reveal My Identity →",
+  },
+  {
+    id: 's4', prog: 'Identity',
+    eyebrow: 'The Big Reveal',
+    title: "Your Story Identity",
+    sub: null,
+    next: "Add the Stakes →",
+  },
+  {
+    id: 's5', prog: 'Challenges',
+    eyebrow: 'The Stakes',
+    title: "What You Work Against",
+    sub: "Every powerful story has stakes. Choose up to 2 forces that make your work harder — and your impact more undeniable.",
+    next: "See My Intros →",
+    skip: "Skip this step →",
+  },
+  {
+    id: 's6', prog: 'Intros',
+    eyebrow: "You're Undeniable",
+    title: "Your Introductions",
+    sub: null,
+    next: null,
+  },
+];
+
+/* ─────────────────────────────────────────────────────────────
+   PILLAR CONFIG
+───────────────────────────────────────────────────────────── */
+const PILLARS = [
+  { id:'passion',   label:'Passions',   icon:'🔥', type:'passion',   desc:'Why you keep going, even when it\'s hard',   req:true  },
+  { id:'principle', label:'Principles', icon:'⭐', type:'principle', desc:'The values and ethics that guide your choices', req:true },
+  { id:'practice',  label:'Practices',  icon:'⚙️',  type:'practice',  desc:'The skills and disciplines you apply',         req:true  },
+  { id:'people',    label:'People',     icon:'🤝', type:'other',     desc:'Who you serve, work with, or work for'               },
+  { id:'products',  label:'Products',   icon:'📦', type:'other',     desc:'What you build, shape, or bring into the world'       },
+  { id:'places',    label:'Places',     icon:'🏙️', type:'other',     desc:'The environments and contexts where you work'         },
+];
+
+/* ─────────────────────────────────────────────────────────────
+   CATEGORY CONFIG
+   Each category: id, name, identity (for id pillars), desc,
+   synonyms (for fill picker), examples, challenges (pillar IDs
+   this category is most associated with for challenge relevance)
+───────────────────────────────────────────────────────────── */
+const CATS = {
+  passion:[
+    { id:'care',       name:'Care',       identity:'Nurturer',
+      desc:'Driven to center wellness and healing for people',
+      synonyms:['care and healing','wellness and protection','building safety for people','tending to others','nurturing communities'],
+      idSynonyms:['Nurturer','Caregiver','Wellness Champion','Healing Force'],
+      examples:'Providing comfort, building safety, tending to relationships',
+      challengeAffinity:['harm','scarcity','disconnection'] },
+
+    { id:'creativity', name:'Creativity', identity:'Maker',
+      desc:'Motivated by building, imagining, and designing',
+      synonyms:['creativity and innovation','building and making','designing new approaches','crafting with purpose','bringing ideas to life'],
+      idSynonyms:['Maker','Creator','Innovator','Builder','Visionary Maker'],
+      examples:'Designing tools, telling stories that move, crafting solutions',
+      challengeAffinity:['resistance','scarcity','invisibility'] },
+
+    { id:'belonging',  name:'Belonging',  identity:'Connector',
+      desc:'Driven to create spaces where people feel seen and valued',
+      synonyms:['belonging and inclusion','building community','creating spaces of belonging','connecting people','fostering inclusion'],
+      idSynonyms:['Connector','Community Builder','Bridge Builder','Unifier'],
+      examples:'Forming coalitions, hosting healing events, building culture',
+      challengeAffinity:['disconnection','inequity','harm'] },
+
+    { id:'hope',       name:'Hope',       identity:'Visionary',
+      desc:'Driven to imagine something better and help others see it',
+      synonyms:['hope and possibility','imagining what\'s possible','future thinking','creating new possibilities','envisioning change'],
+      idSynonyms:['Visionary','Hope Builder','Possibility Thinker','Dreamer'],
+      examples:'Painting possibilities, encouraging others, future-focused work',
+      challengeAffinity:['resistance','instability','inequity'] },
+
+    { id:'justice',    name:'Justice',    identity:'Advocate',
+      desc:'Driven to make things fair and protect those harmed',
+      synonyms:['justice and equity','fighting for fairness','advancing equity','protecting the vulnerable','challenging injustice'],
+      idSynonyms:['Advocate','Justice Champion','Equity Leader','Change Fighter'],
+      examples:'Challenging bias, organizing for equity, speaking truth to power',
+      challengeAffinity:['inequity','harm','resistance'] },
+
+    { id:'growth',     name:'Growth',     identity:'Climber',
+      desc:'Motivated by learning and helping others evolve',
+      synonyms:['growth and learning','continuous learning','helping others grow','evolving and improving','building capacity'],
+      idSynonyms:['Climber','Growth Champion','Learning Leader','Capacity Builder'],
+      examples:'Pursuing new skills, deep reflection, transformative programs',
+      challengeAffinity:['scarcity','resistance','instability'] },
+
+    { id:'purpose',    name:'Purpose',    identity:'Wayfinder',
+      desc:'Driven by a deep sense of calling',
+      synonyms:['purpose and calling','mission-driven work','living my calling','working with intention','aligning life and mission'],
+      idSynonyms:['Wayfinder','Purpose-Seeker','Mission Leader','Calling-Driven'],
+      examples:'Seeking mission alignment, helping others find their why',
+      challengeAffinity:['instability','resistance','complexity'] },
+
+    { id:'truth',      name:'Truth',      identity:'Witness',
+      desc:'Called to expose what\'s hidden and tell what others won\'t',
+      synonyms:['truth and transparency','speaking the truth','exposing hidden realities','truth-telling','holding systems accountable'],
+      idSynonyms:['Witness','Truth Teller','Accountability Voice','Story Keeper'],
+      examples:'Gathering untold stories, creating records of accountability',
+      challengeAffinity:['invisibility','harm','resistance'] },
+
+    { id:'liberation', name:'Liberation', identity:'Liberator',
+      desc:'Driven to remove barriers that keep people from thriving',
+      synonyms:['liberation and freedom','removing barriers','breaking cycles of harm','building freedom','dismantling what limits people'],
+      idSynonyms:['Liberator','Freedom Builder','Barrier Breaker','System Changer'],
+      examples:'Breaking cycles of harm, building alternatives to oppressive systems',
+      challengeAffinity:['inequity','harm','resistance'] },
+
+    { id:'wisdom',     name:'Wisdom',     identity:'Guide',
+      desc:'Grounded in experience, reflection, and shared knowledge',
+      synonyms:['wisdom and experience','lived knowledge','ancestral wisdom','deep reflection','mentoring with insight'],
+      idSynonyms:['Guide','Wisdom Keeper','Sage','Mentor','Elder Scholar'],
+      examples:'Teaching from lived lessons, mentoring through deep listening',
+      challengeAffinity:['disconnection','invisibility','scarcity'] },
+  ],
+
+  principle:[
+    { id:'pr-care',      name:'Care',          identity:'Protector',
+      desc:'Centering safety, wellness, and dignity of others',
+      synonyms:['care and safety','protecting people','centering wellness','designing with safety','creating supportive spaces'],
+      idSynonyms:['Protector','Safety Champion','Wellness Guardian','Care Leader'],
+      examples:'Designing with others, preventing burnout, supportive environments',
+      challengeAffinity:['harm','scarcity','instability'] },
+
+    { id:'compassion',   name:'Compassion',    identity:'Humanitarian',
+      desc:'Striving to reduce suffering and make life easier',
+      synonyms:['compassion and kindness','leading with empathy','reducing suffering','designing for those most at risk','radical kindness'],
+      idSynonyms:['Humanitarian','Compassion Leader','Empathy Champion','Kindness Keeper'],
+      examples:'Leading with kindness, stepping in for others, designing for those most at risk',
+      challengeAffinity:['harm','inequity','scarcity'] },
+
+    { id:'accountability',name:'Accountability',identity:'Steward',
+      desc:'Taking ownership of actions, outcomes, and growth',
+      synonyms:['accountability and ownership','taking responsibility','owning outcomes','building feedback into work','learning from failure'],
+      idSynonyms:['Steward','Accountability Champion','Responsibility Leader','Trust Builder'],
+      examples:'Owning mistakes, learning from failure, building feedback loops',
+      challengeAffinity:['invisibility','resistance','complexity'] },
+
+    { id:'curiosity',    name:'Curiosity',     identity:'Explorer',
+      desc:'Ever asking questions and staying open to possibility',
+      synonyms:['curiosity and openness','asking better questions','staying open to surprise','exploring new ideas','questioning the status quo'],
+      idSynonyms:['Explorer','Curiosity-Seeker','Question Asker','Wonder Keeper'],
+      examples:'Experimenting, listening without judgment, looking deeper',
+      challengeAffinity:['resistance','complexity','instability'] },
+
+    { id:'humility',     name:'Humility',      identity:'Learner',
+      desc:'Staying open and grounded no matter how much you know',
+      synonyms:['humility and openness','staying grounded','welcoming feedback','sharing credit','asking for help'],
+      idSynonyms:['Learner','Humble Leader','Growth Seeker','Feedback Champion'],
+      examples:'Welcoming feedback, asking for help, sharing space and credit',
+      challengeAffinity:['resistance','disconnection','complexity'] },
+
+    { id:'courage',      name:'Courage',       identity:'Disrupter',
+      desc:'Acting for what\'s right even when it\'s risky',
+      synonyms:['courage and conviction','bold action','speaking up','not shrinking','taking brave stands'],
+      idSynonyms:['Disrupter','Courageous Leader','Bold Voice','Brave Changemaker'],
+      examples:'Naming injustice, trying new ideas, not shrinking when it matters',
+      challengeAffinity:['resistance','harm','inequity'] },
+
+    { id:'precision',    name:'Precision',     identity:'Builder',
+      desc:'Holding yourself to a high standard of accuracy and care',
+      synonyms:['precision and quality','high standards','accuracy and care','intentional work','finishing with excellence'],
+      idSynonyms:['Builder','Precision Leader','Quality Champion','Excellence Seeker'],
+      examples:'Checking facts, building organized systems, finishing with intention',
+      challengeAffinity:['scarcity','complexity','instability'] },
+
+    { id:'refuse-harm',  name:'Refuse Harm',   identity:'Guardian',
+      desc:'Refusing to cause harm even when it would be easier',
+      synonyms:['refusing harm','do no harm','ethical practice','protecting from harm','responsible action'],
+      idSynonyms:['Guardian','Harm Preventer','Ethical Leader','Safety Keeper'],
+      examples:'Not overstepping, refusing harmful tactics, ethical practice',
+      challengeAffinity:['harm','resistance','inequity'] },
+
+    { id:'integrity',    name:'Integrity',     identity:'Truth-Teller',
+      desc:'Staying honest and aligned with values under pressure',
+      synonyms:['integrity and honesty','staying aligned with values','speaking truth','authentic action','refusing to perform'],
+      idSynonyms:['Truth-Teller','Integrity Leader','Authentic Voice','Values Champion'],
+      examples:'Speaking truth when unpopular, refusing to perform, staying consistent',
+      challengeAffinity:['resistance','invisibility','harm'] },
+
+    { id:'respect',      name:'Respect',       identity:'Respect-Keeper',
+      desc:'Treating everyone with dignity regardless of status',
+      synonyms:['respect and dignity','honoring everyone','treating people equally','valuing diverse experiences','dignity-centered work'],
+      idSynonyms:['Respect-Keeper','Dignity Champion','Equity Voice','Inclusion Leader'],
+      examples:'Honoring boundaries, asking before assuming, speaking to everyone equally',
+      challengeAffinity:['inequity','disconnection','harm'] },
+  ],
+
+  practice:[
+    { id:'building',     name:'Building',      identity:'Builder',
+      desc:'Constructing solutions and bringing ideas to life',
+      synonyms:['building and engineering','solution development','creating and implementing','prototyping and coding','engineering with care'],
+      idSynonyms:['Builder','Engineer','Solution Architect','Creator','Developer'],
+      examples:'Software development, coding, prototyping, solution engineering',
+      challengeAffinity:['scarcity','complexity','resistance'] },
+
+    { id:'connection',   name:'Connection',    identity:'Connector',
+      desc:'Forging relationships, building networks, activating collaboration',
+      synonyms:['building connections','relationship building','community networking','mentorship and outreach','activating collaboration'],
+      idSynonyms:['Connector','Network Builder','Relationship Strategist','Community Weaver'],
+      examples:'Networking, mentoring, community outreach, sponsorship',
+      challengeAffinity:['disconnection','instability','scarcity'] },
+
+    { id:'analyzing',    name:'Analyzing',     identity:'Analyst',
+      desc:'Revealing patterns, investigating truth, turning data into insight',
+      synonyms:['analysis and research','data-driven insight','pattern recognition','research and evaluation','turning data into stories'],
+      idSynonyms:['Analyst','Researcher','Data Storyteller','Insight Hunter','Evaluator'],
+      examples:'Research, statistics, evaluations, modeling, forecasting',
+      challengeAffinity:['invisibility','complexity','scarcity'] },
+
+    { id:'design',       name:'Design',        identity:'Designer',
+      desc:'Creating structure, blending function with feeling',
+      synonyms:['design and experience','UX and visual design','creating with intention','shaping experiences','art and architecture'],
+      idSynonyms:['Designer','Experience Creator','Visual Architect','UX Leader','Creative Director'],
+      examples:'Art, architecture, graphic design, UX, illustration, styling',
+      challengeAffinity:['scarcity','resistance','complexity'] },
+
+    { id:'education',    name:'Education',     identity:'Educator',
+      desc:'Guiding learning, sharing knowledge, supporting understanding',
+      synonyms:['education and coaching','teaching and training','curriculum development','facilitating learning','knowledge sharing'],
+      idSynonyms:['Educator','Teacher','Learning Architect','Coach','Facilitator'],
+      examples:'Teaching, coaching, training, facilitation, curriculum design',
+      challengeAffinity:['scarcity','inequity','resistance'] },
+
+    { id:'communication',name:'Communication', identity:'Communicator',
+      desc:'Moving ideas, shaping stories, giving voice to what matters',
+      synonyms:['communication and storytelling','narrative strategy','shaping stories','giving voice to impact','writing and speaking'],
+      idSynonyms:['Communicator','Storyteller','Narrative Strategist','Voice','Journalist'],
+      examples:'Writing, speaking, storytelling, marketing, journalism',
+      challengeAffinity:['invisibility','resistance','disconnection'] },
+
+    { id:'organizing',   name:'Organizing',    identity:'Organizer',
+      desc:'Bringing order to complexity, managing flow and logistics',
+      synonyms:['organizing and operations','project management','systems coordination','bringing order to complexity','workflow management'],
+      idSynonyms:['Organizer','Operations Lead','Project Manager','Systems Thinker','Coordinator'],
+      examples:'Project management, operations, scheduling, team leadership',
+      challengeAffinity:['complexity','instability','scarcity'] },
+
+    { id:'protection',   name:'Protection',    identity:'Protector',
+      desc:'Enhancing safety, preserving spaces, reducing harm',
+      synonyms:['protection and safety','risk management','harm reduction','preserving what matters','emergency response'],
+      idSynonyms:['Protector','Safety Leader','Risk Manager','Harm Reducer','Guardian'],
+      examples:'Security, emergency response, risk management, compliance',
+      challengeAffinity:['harm','instability','inequity'] },
+
+    { id:'healing',      name:'Healing',       identity:'Healer',
+      desc:'Mending, restoring, and making space for renewal',
+      synonyms:['healing and restoration','counseling and therapy','equity and healing','mindfulness and mentoring','making space for renewal'],
+      idSynonyms:['Healer','Counselor','Restoration Leader','Wellness Advocate','Therapist'],
+      examples:'Counseling, therapy, equity work, mindfulness, nurturing',
+      challengeAffinity:['harm','scarcity','disconnection'] },
+
+    { id:'strategy',     name:'Strategy',      identity:'Strategist',
+      desc:'Connecting vision to action, aligning plans with purpose',
+      synonyms:['strategy and vision','systems thinking','policy and planning','connecting vision to action','consulting and forecasting'],
+      idSynonyms:['Strategist','Visionary','Systems Thinker','Policy Leader','Consultant'],
+      examples:'Visioning, policy framing, forecasting, systems thinking',
+      challengeAffinity:['complexity','instability','resistance'] },
+  ],
+
+  people:[
+    { id:'teammates',   name:'Teammates',          identity:null,
+      desc:'Side-by-side collaborators who build with you',
+      synonyms:['teammates','collaborators','the people I build with','co-creators','partners in the work'],
+      examples:'Co-founders, shift partners, project collaborators, fellow organizers' },
+    { id:'clients',     name:'Clients',             identity:null,
+      desc:'The direct beneficiaries of your work',
+      synonyms:['clients','customers','the people I serve','constituents','those who count on me'],
+      examples:'Students, patients, residents, shoppers, users, entrepreneurs' },
+    { id:'partners',    name:'Partners',            identity:null,
+      desc:'External organizations or allies you align with to amplify impact',
+      synonyms:['partners','partner organizations','allies and coalitions','external collaborators','mission-aligned partners'],
+      examples:'Nonprofits, agencies, community orgs, vendor partners, coalitions' },
+    { id:'stakeholders',name:'Stakeholders',        identity:null,
+      desc:'Decision-makers whose buy-in shapes what gets done',
+      synonyms:['stakeholders','organizational leaders','decision-makers','executives and managers','the people who hold power'],
+      examples:'Directors, VPs, board members, elected officials, department heads' },
+    { id:'families',    name:'Families',            identity:null,
+      desc:'The households whose lives shift because of your work',
+      synonyms:['families','households','caregivers and loved ones','the families I serve','home communities'],
+      examples:'Parents of students, families of patients, households in your service area' },
+    { id:'communities', name:'Communities',         identity:null,
+      desc:'The neighborhoods and networks shaped by the people you serve',
+      synonyms:['communities','neighborhoods','the communities I serve','local ecosystems','grassroots groups'],
+      examples:'Neighborhood residents, cultural communities, civic networks' },
+    { id:'mentors',     name:'Mentors & Guides',    identity:null,
+      desc:'The people who shaped you — who invested in you before you had a title',
+      synonyms:['mentors and guides','the people who shaped me','teachers and elders','those who invested in me','my foundation'],
+      examples:'Parents, teachers, coaches, elders, the first person who believed in you' },
+    { id:'future',      name:'Future Generations',  identity:null,
+      desc:"People who will benefit from your work long after you're gone",
+      synonyms:['future generations','the next generation','those who come after','future beneficiaries','people my work will outlast me to reach'],
+      examples:'Future students, next-gen leaders, communities shaped by what you built' },
+  ],
+
+  products:[
+    { id:'tools',      name:'Tools & Resources',    identity:null,
+      desc:'Tangible things you made that others pick up and use',
+      synonyms:['tools','resources','guides and toolkits','things I built that others use','physical and digital resources'],
+      examples:'Dashboards, handbooks, templates, apps, reports, curriculum materials' },
+    { id:'systems',    name:'Systems & Processes',  identity:null,
+      desc:'The workflows and structures you designed that make work run smoother',
+      synonyms:['systems','processes','workflows','structures I put in place','operational improvements'],
+      examples:'Onboarding flows, intake processes, safety protocols, scheduling systems' },
+    { id:'programs',   name:'Programs & Events',    identity:null,
+      desc:'Structured initiatives or learning experiences you designed or led',
+      synonyms:['programs','initiatives','workshops and trainings','experiences I designed','structured interventions'],
+      examples:'Training programs, fellowships, workshops, town halls, mentoring circles' },
+    { id:'culture',    name:'Culture & Moments',    identity:null,
+      desc:'Shifts in how people relate or work together — often invisible but lasting',
+      synonyms:['culture shifts','cultural moments','team norms I helped create','the way people work now','lasting behavioral change'],
+      examples:'Psychological safety, new team rituals, inclusive norms, trust rebuilt after conflict' },
+    { id:'knowledge',  name:'Knowledge & Insight',  identity:null,
+      desc:'Ideas, analysis, and frameworks that changed how others think or decide',
+      synonyms:['knowledge','insights','analysis and findings','ideas that shaped decisions','intellectual contributions'],
+      examples:'Research findings, policy briefs, strategic frameworks, evaluation reports' },
+    { id:'content',    name:'Content & Stories',    identity:null,
+      desc:'Stories, campaigns, and creative work that moved people or shifted understanding',
+      synonyms:['content','communications','stories I told','campaigns and media','narratives that shifted perception'],
+      examples:'Articles, campaigns, murals, films, speeches, grant narratives, brand work' },
+    { id:'outcomes',   name:'Outcomes & Impact',    identity:null,
+      desc:'The ripple effects — results that transformed lives, systems, or opportunities',
+      synonyms:['outcomes','impact','the difference I made','results that changed things','what changed because I was there'],
+      examples:'Funding secured, graduation rates improved, policy changed, trust rebuilt' },
+  ],
+
+  places:[
+    { id:'classrooms', name:'Schools & Classrooms', identity:null,
+      desc:'Learning environments — formal and informal spaces for education and growth',
+      synonyms:['schools','classrooms','learning environments','educational settings','campuses and training centers'],
+      examples:'K-12 schools, universities, community colleges, training rooms' },
+    { id:'offices',    name:'Offices & Organizations', identity:null,
+      desc:'Professional environments — workplaces, agencies, and organizational spaces',
+      synonyms:['offices','organizations','workplaces','professional settings','agencies and firms'],
+      examples:'Corporations, nonprofits, government agencies, startups, consulting firms' },
+    { id:'community-spaces', name:'Community Spaces', identity:null,
+      desc:'Places where people gather, organize, and support one another',
+      synonyms:['community spaces','gathering places','civic spaces','where the community meets','community hubs'],
+      examples:'Community centers, churches, libraries, rec centers, town halls' },
+    { id:'streets',    name:'Streets & Neighborhoods', identity:null,
+      desc:'On-the-ground spaces of everyday life — where impact is most direct',
+      synonyms:['neighborhoods','on the ground','streets and blocks','where people actually live','the community'],
+      examples:'Neighborhoods, housing developments, parks, storefronts, playgrounds' },
+    { id:'healthcare', name:'Clinics & Care Settings', identity:null,
+      desc:'Health and wellness environments — places of healing and recovery',
+      synonyms:['hospitals','clinics','care settings','healthcare environments','places of healing'],
+      examples:'Hospitals, community health centers, mental health clinics, shelters' },
+    { id:'digital',    name:'Digital Spaces',    identity:null,
+      desc:'Online platforms and virtual environments where your work lives',
+      synonyms:['digital spaces','online platforms','virtual environments','digital communities','the internet'],
+      examples:'Social media, apps, virtual classrooms, online communities, remote workplaces' },
+    { id:'field',      name:'Field & Sites',     identity:null,
+      desc:'On-location environments — job sites, retail floors, outdoor spaces',
+      synonyms:['field sites','job sites','on location','the field','where the real work happens'],
+      examples:'Construction sites, labs, retail floors, farms, event venues, restaurants' },
+  ],
+};
+
+/* ─────────────────────────────────────────────────────────────
+   CHALLENGE CATEGORIES
+   Universal forces that make work harder — the "villain" in
+   the story. Designed to work across any pillar combination.
+   Each has: id, name, icon, desc, synonyms, examples,
+   and pillarAffinity (which pillar types surface this challenge
+   most prominently in the UI — all are always available).
+───────────────────────────────────────────────────────────── */
+const CHALLENGES = [
+  { id:'scarcity',      name:'Scarcity',           icon:'📉',
+    desc:'Not enough — resources, time, funding, staff, or tools to do the work right',
+    synonyms:['scarcity','lack of resources','underfunding','not enough time or support','resource gaps that slow everything down'],
+    examples:'Chronically understaffed teams, programs cut before they could grow, tools that don\'t exist yet',
+    pillarAffinity:['practice','products','places'] },
+
+  { id:'inequity',      name:'Inequity',           icon:'⚖️',
+    desc:'Unequal access to power, opportunity, representation, or reward',
+    synonyms:['inequity','systemic inequality','disparities in access and opportunity','power imbalances','who benefits and who doesn\'t'],
+    examples:'Credential gatekeeping, wage gaps, underrepresentation, unequal enforcement of rules',
+    pillarAffinity:['passion','principle','people'] },
+
+  { id:'resistance',    name:'Resistance',         icon:'🧱',
+    desc:'Pushback against change — the status quo protecting itself',
+    synonyms:['resistance to change','institutional inertia','the status quo','pushback and gatekeeping','systems that don\'t want to move'],
+    examples:'Policies that block innovation, leaders resistant to feedback, change fatigue, risk aversion',
+    pillarAffinity:['principle','practice','products'] },
+
+  { id:'invisibility',  name:'Invisibility',       icon:'👤',
+    desc:'Work, people, or problems that go unseen, uncounted, or uncredited',
+    synonyms:['invisibility','being unseen','uncredited labor','contributions that don\'t make the record','work that disappears'],
+    examples:'Informal contributions ignored, communities left out of data, work credited to others',
+    pillarAffinity:['products','people','passion'] },
+
+  { id:'disconnection', name:'Disconnection',      icon:'🔗',
+    desc:'People, places, or ideas isolated from the networks and resources that could help them',
+    synonyms:['disconnection','isolation','broken networks','communities cut off from opportunity','gaps between people who should be working together'],
+    examples:'Geographic isolation, siloed teams, communities overlooked by funders, lack of mentorship pipelines',
+    pillarAffinity:['people','places','passion'] },
+
+  { id:'harm',          name:'Active Harm',        icon:'⚠️',
+    desc:'Damage being done — to people, communities, systems, or environments',
+    synonyms:['harm','active harm being done','damage that needs to be stopped','hurt that compounds over time','cycles of harm'],
+    examples:'Toxic workplace cultures, policy violence, environmental damage, communities under threat',
+    pillarAffinity:['principle','passion','people'] },
+
+  { id:'instability',   name:'Instability',        icon:'🌊',
+    desc:'Constant flux — in leadership, funding, policy, or the environment itself',
+    synonyms:['instability','constant change','unpredictable conditions','shifting ground','environments that can\'t hold steady'],
+    examples:'Leadership turnover, funding cliffs, policy reversals, crisis conditions that never resolve',
+    pillarAffinity:['practice','places','products'] },
+
+  { id:'complexity',    name:'Complexity',         icon:'🕸️',
+    desc:'Problems too tangled, layered, or systemic for simple solutions',
+    synonyms:['complexity','wicked problems','layered systemic challenges','problems without easy answers','challenges that require more than one solution'],
+    examples:'Multi-generational poverty, climate change, health disparities, broken criminal justice systems',
+    pillarAffinity:['principle','practice','products'] },
+];
+
+/* ─────────────────────────────────────────────────────────────
+   INTRO TEMPLATES
+   Keys match getTplKey() output. Tokens: [id] [passion]
+   [principle] [practice] [people] [products] [places] [challenges]
+───────────────────────────────────────────────────────────── */
+const TEMPLATES = {
+  'practice':[
+    ()=>`I am a [id] using [practice] in my work.`,
+    ()=>`As a [id], my work centers on [practice].`,
+    ()=>`My work as a [id] is built on [practice].`,
+  ],
+  'passion':[
+    ()=>`I am a [id], fueled by [passion].`,
+    ()=>`As a [id], everything I do is driven by [passion].`,
+    ()=>`My work is rooted in [passion] — that's what makes me a [id].`,
+  ],
+  'principle':[
+    ()=>`I am a [id], guided by [principle].`,
+    ()=>`As a [id], I lead with [principle].`,
+    ()=>`Everything I do reflects my commitment to [principle] — I am a [id].`,
+  ],
+  'passion+practice':[
+    ()=>`I am a [id] fueled by [passion] in my [practice].`,
+    ()=>`As a [id], I use [practice] driven by [passion].`,
+    ()=>`My work as a [id] blends [practice] and [passion] to create impact.`,
+    ()=>`I'm a [id] driven by [passion] — it's what keeps me going in my [practice].`,
+  ],
+  'principle+practice':[
+    ()=>`As a [id], my [practice] reflects my commitment to [principle].`,
+    ()=>`I am a [id] applying [practice] with [principle] at the core.`,
+    ()=>`As a [id], I lead with [principle] in my [practice].`,
+  ],
+  'passion+principle':[
+    ()=>`I am a [id] guided by [principle] and fueled by [passion].`,
+    ()=>`As a [id], I lead with [principle] and stay fueled by [passion].`,
+    ()=>`I'm a [id] — [principle] guides me and [passion] drives me.`,
+  ],
+  'passion+principle+practice':[
+    ()=>`As a [id], I use [practice] fueled by [passion] and guided by [principle].`,
+    ()=>`I am a [id] driven by [passion], grounded in [principle], and skilled in [practice].`,
+    ()=>`I'm a [id] using [practice] to create impact — with [passion] and [principle] at the core.`,
+    ()=>`My work as a [id] brings together [practice], [passion], and [principle].`,
+  ],
+};
+
+/* ─────────────────────────────────────────────────────────────
+   STATE  — only rendering functions touch this
+───────────────────────────────────────────────────────────── */
+let S = {
+  name: '',
+  pillars: [],          // selected pillar ids (max 3)
+  cats: {},             // { pillarId: [catId, catId] }
+  challenges: [],       // selected challenge ids (max 2)
+  activeIdentity: null, // { name, pillar, catId }
+  allIdentities: [],    // [{ name, pillar, catId, icon }]
+  synOverrides: {},     // { tplIndex: { token: synonym } }
+  currentTpls: [],      // picked template fns for today
+  currentScreen: 1,
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDERING ENGINE
+   These functions only read from CONFIG + STATE.
+   Adding a new pillar or screen = edit config above only.
+══════════════════════════════════════════════════════════════ */
+
+// ── INIT ──────────────────────────────────────────────────────
+function init() {
+  buildProgressBar();
+  buildScreens();
+  applyURLParams();
+  goTo(1);
+
+  document.getElementById('synClose').onclick = closeSyn;
+  document.addEventListener('click', e => {
+    const pop = document.getElementById('synPop');
+    if (pop.style.display !== 'none' && !pop.contains(e.target) && !e.target.classList.contains('fill')) closeSyn();
+  });
+}
+
+function applyURLParams() {
+  const coach = COACHES[CFG.coachId] || COACHES.warm;
+  document.getElementById('hdrSub').textContent =
+    CFG.tier === 'paid' ? 'BreakRoom Member Experience' : 'Build your introduction · Free forever';
+}
+
+// ── PROGRESS BAR ──────────────────────────────────────────────
+function buildProgressBar() {
+  const wrap = document.getElementById('progSteps');
+  SCREENS_CFG.slice(1).forEach((sc, i) => {
+    const el = document.createElement('div');
+    el.className = 'prog-step';
+    el.id = `pg${i + 1}`;
+    el.textContent = sc.prog;
+    wrap.appendChild(el);
+  });
+}
+
+function updateProgressBar(n) {
+  SCREENS_CFG.slice(1).forEach((_, i) => {
+    const el = document.getElementById(`pg${i + 1}`);
+    el.classList.remove('active', 'done');
+    if (i + 1 < n) el.classList.add('done');
+    if (i + 1 === n) el.classList.add('active');
+  });
+}
+
+// ── SCREEN BUILDER ────────────────────────────────────────────
+function buildScreens() {
+  const container = document.getElementById('screens');
+  container.innerHTML = '';
+  [buildS1, buildS2, buildS3, buildS4, buildS5, buildS6].forEach((fn, i) => {
+    const div = document.createElement('div');
+    div.className = 'screen';
+    div.id = `s${i + 1}`;
+    fn(div);
+    container.appendChild(div);
+  });
+}
+
+function screenHeader(div, screenNum) {
+  const sc = SCREENS_CFG[screenNum];
+  const coach = COACHES[CFG.coachId] || COACHES.warm;
+  const line = coach.lines[`s${screenNum}`];
+  div.innerHTML = `
+    ${line ? `<div class="coach-wrap" id="coachWrap${screenNum}">
+      <div class="coach-avatar">${coach.avatar}</div>
+      <div class="coach-bubble"><div class="coach-name">${coach.name}</div>${line}</div>
+    </div>` : ''}
+    <div class="screen-eyebrow">${sc.eyebrow}</div>
+    <div class="stitle">${sc.title}</div>
+    ${sc.sub ? `<div class="ssub">${sc.sub}</div>` : ''}
+  `;
+}
+
+// ── SCREEN 1: NAME ────────────────────────────────────────────
+function buildS1(div) {
+  screenHeader(div, 1);
+  div.innerHTML += `
+    <div class="name-card">
+      <input class="name-input" id="nameInput" type="text" placeholder="Your first name…" maxlength="20"/>
+    </div>
+    <div class="nav-row">
+      <button class="btn-next" id="btnS1" onclick="goTo(2)" disabled>Let's Go →</button>
+    </div>
+  `;
+}
+
+// ── SCREEN 2: PILLARS ─────────────────────────────────────────
+function buildS2(div) {
+  screenHeader(div, 2);
+  div.innerHTML += `
+    <div class="pillar-hint">
+      <strong>Passions</strong> = why you keep going &nbsp;·&nbsp;
+      <strong>Principles</strong> = what guides you &nbsp;·&nbsp;
+      <strong>Practices</strong> = what you do<br>
+      People, Products & Places add context and depth to your story.
+    </div>
+    <div class="pillar-grid" id="pillarGrid"></div>
+    <div class="pillar-note" id="pillarNote">Select 1–3 pillars · At least one must be Passion, Principle, or Practice</div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="goTo(1)">← Back</button>
+      <button class="btn-next" id="btnS2" onclick="goTo(3)" disabled>Build My Story →</button>
+    </div>
+  `;
+}
+
+// ── SCREEN 3: CATEGORIES ──────────────────────────────────────
+function buildS3(div) {
+  screenHeader(div, 3);
+  div.innerHTML += `
+    <div id="catSections"></div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="goTo(2)">← Back</button>
+      <button class="btn-next" id="btnS3" onclick="goTo(4)" disabled>Reveal My Identity →</button>
+    </div>
+  `;
+}
+
+// ── SCREEN 4: IDENTITY ────────────────────────────────────────
+function buildS4(div) {
+  screenHeader(div, 4);
+  div.innerHTML += `
+    <div id="idCardWrap"></div>
+    <div class="nav-row" style="justify-content:center;">
+      <button class="btn-back" onclick="goTo(3)">← Adjust Story</button>
+      <button class="btn-next" onclick="goTo(5)">Add the Stakes →</button>
+    </div>
+  `;
+}
+
+// ── SCREEN 5: CHALLENGES ──────────────────────────────────────
+function buildS5(div) {
+  screenHeader(div, 5);
+  div.innerHTML += `
+    <div class="challenge-intro">
+      <p>Every powerful story has <strong>stakes</strong> — forces that make the work harder and the impact more undeniable. Choose up to 2 that your work pushes back against.</p>
+    </div>
+    <div class="chall-grid" id="challGrid"></div>
+    <div class="chall-skip" onclick="skipChallenges()">Skip this step →</div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="goTo(4)">← Back</button>
+      <button class="btn-next" id="btnS5" onclick="goTo(6)" disabled>See My Intros →</button>
+    </div>
+  `;
+}
+
+// ── SCREEN 6: INTROS ──────────────────────────────────────────
+function buildS6(div) {
+  screenHeader(div, 6);
+  div.innerHTML += `
+    <div class="ssub" id="s6sub"></div>
+    <div id="tplWrap"></div>
+    <div class="daily-note">
+      🔁 <strong>Come back tomorrow</strong> for fresh intros built from your same story.<br>
+      Join the <strong>BreakRoom</strong> to save your profile, unlock more formats & go deeper.
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" onclick="goTo(5)">← Back</button>
+      <button class="btn-restart" onclick="restart()">↺ Start Over</button>
+    </div>
+  `;
+}
+
+// ── NAVIGATION ────────────────────────────────────────────────
+function goTo(n) {
+  S.currentScreen = n;
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(`s${n}`).classList.add('active');
+  updateProgressBar(n);
+
+  if (n === 1) setupS1();
+  if (n === 2) setupS2();
+  if (n === 3) setupS3();
+  if (n === 4) setupS4();
+  if (n === 5) setupS5();
+  if (n === 6) setupS6();
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restart() {
+  S = { name:'', pillars:[], cats:{}, challenges:[], activeIdentity:null, allIdentities:[], synOverrides:{}, currentTpls:[], currentScreen:1 };
+  buildScreens();
+  goTo(1);
+}
+
+// ── S1 SETUP ──────────────────────────────────────────────────
+function setupS1() {
+  const input = document.getElementById('nameInput');
+  if (S.name) input.value = S.name;
+  input.oninput = e => {
+    S.name = e.target.value.trim();
+    document.getElementById('btnS1').disabled = S.name.length < 2;
+  };
+  input.onkeydown = e => { if (e.key === 'Enter' && S.name.length >= 2) goTo(2); };
+  document.getElementById('btnS1').disabled = S.name.length < 2;
+  setTimeout(() => input.focus(), 100);
+}
+
+// ── S2 SETUP ──────────────────────────────────────────────────
+function setupS2() {
+  const grid = document.getElementById('pillarGrid');
+  grid.innerHTML = '';
+  PILLARS.forEach(p => {
+    const c = document.createElement('div');
+    c.className = `pc ${p.type}`;
+    c.id = `pc-${p.id}`;
+    c.innerHTML = `<div class="pc-icon">${p.icon}</div><div class="pc-name">${p.label}</div><div class="pc-desc">${p.desc}</div><div class="pc-check">✅</div>`;
+    c.onclick = () => togglePillar(p.id);
+    if (S.pillars.includes(p.id)) c.classList.add('selected');
+    grid.appendChild(c);
+  });
+  refreshPillarState();
+}
+
+function togglePillar(id) {
+  const i = S.pillars.indexOf(id);
+  if (i >= 0) { S.pillars.splice(i, 1); delete S.cats[id]; }
+  else { if (S.pillars.length >= CFG.maxPillars) return; S.pillars.push(id); }
+  refreshPillarState();
+}
+
+function refreshPillarState() {
+  const hasId = S.pillars.some(id => ['passion','principle','practice'].includes(id));
+  PILLARS.forEach(p => {
+    const c = document.getElementById(`pc-${p.id}`);
+    if (!c) return;
+    c.classList.toggle('selected', S.pillars.includes(p.id));
+    c.classList.toggle('disabled', S.pillars.length >= CFG.maxPillars && !S.pillars.includes(p.id));
+  });
+  document.getElementById('btnS2').disabled = !S.pillars.length || !hasId;
+  const note = document.getElementById('pillarNote');
+  note.textContent = !S.pillars.length ? 'Select 1–3 pillars · At least one must be Passion, Principle, or Practice'
+    : !hasId ? '⚠️ Add at least one of: Passion, Principle, or Practice to continue'
+    : `${S.pillars.length}/3 selected · Looking good!`;
+}
+
+// ── S3 SETUP ──────────────────────────────────────────────────
+function setupS3() {
+  const con = document.getElementById('catSections');
+  con.innerHTML = '';
+  S.pillars.forEach(pid => {
+    const pillar = PILLARS.find(p => p.id === pid);
+    const cats = CATS[pid];
+    if (!cats) return;
+    if (!S.cats[pid]) S.cats[pid] = [];
+    const selCls = ['passion','principle','practice'].includes(pid) ? `sel-${pid}` : 'sel-other';
+
+    const sec = document.createElement('div');
+    sec.innerHTML = `<div class="psh"><span class="psh-icon">${pillar.icon}</span><div><div class="psh-title">${pillar.label}</div><div class="psh-sub">Choose up to 2 that feel most like you</div></div></div>`;
+
+    const grid = document.createElement('div');
+    grid.className = 'cat-grid';
+    cats.forEach(cat => {
+      const card = document.createElement('div');
+      card.className = 'cc' + (S.cats[pid].includes(cat.id) ? ` ${selCls}` : '');
+      card.id = `cc-${pid}-${cat.id}`;
+      card.innerHTML = `<div class="cc-name">${cat.name}</div><div class="cc-desc">${cat.desc}</div><div class="cc-ex">${cat.examples}</div><div class="cc-check">✅</div>`;
+      card.onclick = () => toggleCat(pid, cat.id, selCls);
+      grid.appendChild(card);
+    });
+    sec.appendChild(grid);
+    con.appendChild(sec);
+  });
+  checkS3Valid();
+}
+
+function toggleCat(pid, cid, selCls) {
+  if (!S.cats[pid]) S.cats[pid] = [];
+  const arr = S.cats[pid];
+  const i = arr.indexOf(cid);
+  if (i >= 0) {
+    arr.splice(i, 1);
+    document.getElementById(`cc-${pid}-${cid}`)?.classList.remove(selCls);
+  } else {
+    if (arr.length >= CFG.maxCats) {
+      const old = arr.shift();
+      document.getElementById(`cc-${pid}-${old}`)?.classList.remove(selCls);
+    }
+    arr.push(cid);
+    document.getElementById(`cc-${pid}-${cid}`)?.classList.add(selCls);
+  }
+  checkS3Valid();
+}
+
+function checkS3Valid() {
+  const idPillars = S.pillars.filter(id => ['passion','principle','practice'].includes(id));
+  document.getElementById('btnS3').disabled = !idPillars.every(id => (S.cats[id]||[]).length > 0);
+}
+
+// ── S4 SETUP ──────────────────────────────────────────────────
+function setupS4() {
+  // Build all identities from selected identity pillars
+  S.allIdentities = [];
+  ['passion','principle','practice'].forEach(pid => {
+    if (!S.pillars.includes(pid)) return;
+    const cids = S.cats[pid] || [];
+    if (!cids.length) return;
+    const cat = CATS[pid].find(c => c.id === cids[0]);
+    if (cat?.identity) S.allIdentities.push({ name: cat.identity, pillar: pid, catId: cids[0], icon: PILLARS.find(p => p.id === pid).icon });
+  });
+  if (!S.activeIdentity || !S.allIdentities.find(a => a.name === S.activeIdentity.name)) {
+    S.activeIdentity = S.allIdentities[0] || null;
+  }
+  renderIdentityCard();
+}
+
+function setIdentity(idx) {
+  S.activeIdentity = S.allIdentities[idx];
+  S.synOverrides = {};
+  renderIdentityCard();
+}
+
+function renderIdentityCard() {
+  const wrap = document.getElementById('idCardWrap');
+  if (!S.activeIdentity) { wrap.innerHTML = '<p>Please go back and make selections.</p>'; return; }
+  const id = S.activeIdentity;
+  const cat = CATS[id.pillar].find(c => c.id === id.catId);
+  const pillHtml = S.allIdentities.map(ai => {
+    const c = CATS[ai.pillar].find(x => x.id === ai.catId);
+    return `<span class="id-pill ${ai.pillar}">${ai.icon} ${c?.name || ''}</span>`;
+  }).join('');
+
+  let html = `
+    <div class="id-primary">
+      <div class="id-eye">Your Story Identity · ${S.name}</div>
+      <div class="id-name">${id.name.toUpperCase()}</div>
+      <div class="id-tagline">${cat?.desc || ''}</div>
+      <div class="id-pills">${pillHtml}</div>
+    </div>
+    <div class="hi-box">✨ You're <strong>${S.name}</strong>. This is how your story opens. All your identities are real — choose which one leads right now.</div>
+  `;
+
+  if (S.allIdentities.length > 1) {
+    html += `<div class="shift-label">Which identity leads your story?</div><div class="alt-identities">`;
+    S.allIdentities.forEach((ai, idx) => {
+      const c = CATS[ai.pillar].find(x => x.id === ai.catId);
+      const isActive = ai.name === id.name;
+      const col = ai.pillar === 'passion' ? 'var(--red)' : ai.pillar === 'principle' ? 'var(--navy)' : 'var(--gold-dark)';
+      const bg = ai.pillar === 'passion' ? 'var(--red-pale)' : ai.pillar === 'principle' ? 'var(--navy-pale)' : 'var(--gold-pale)';
+      html += `<div class="alt-card" onclick="setIdentity(${idx})"
+        style="${isActive ? `border-color:${col};background:${bg};` : ''}">
+        <div class="alt-icon">${ai.icon}</div>
+        <div class="alt-name">${ai.name}</div>
+        <div class="alt-from">${PILLARS.find(p => p.id === ai.pillar)?.label}</div>
+        <div class="alt-status" style="color:${isActive ? col : 'var(--gray-light)'}">
+          ${isActive ? '✓ Leading' : 'Tap to lead'}
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+  wrap.innerHTML = html;
+}
+
+// ── S5 SETUP ──────────────────────────────────────────────────
+function setupS5() {
+  const grid = document.getElementById('challGrid');
+  grid.innerHTML = '';
+
+  // Surface relevant challenges first based on chosen categories' affinities
+  const affinities = new Set();
+  S.pillars.forEach(pid => {
+    (S.cats[pid] || []).forEach(cid => {
+      const cat = (CATS[pid] || []).find(c => c.id === cid);
+      (cat?.challengeAffinity || []).forEach(a => affinities.add(a));
+    });
+  });
+
+  // Sort: affinity matches first, then rest
+  const sorted = [...CHALLENGES].sort((a, b) => {
+    const aRel = affinities.has(a.id) ? 0 : 1;
+    const bRel = affinities.has(b.id) ? 0 : 1;
+    return aRel - bRel;
+  });
+
+  sorted.forEach((ch, i) => {
+    const card = document.createElement('div');
+    const isSel = S.challenges.includes(ch.id);
+    card.className = 'chc' + (isSel ? ' sel' : '');
+    card.id = `chc-${ch.id}`;
+    const isRelevant = affinities.has(ch.id);
+    card.innerHTML = `
+      ${isRelevant && i < 4 ? '<div style="position:absolute;top:8px;right:28px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--red);text-transform:uppercase;">Relevant</div>' : ''}
+      <div class="chc-name">${ch.icon} ${ch.name}</div>
+      <div class="chc-desc">${ch.desc}</div>
+      <div class="chc-ex">${ch.examples}</div>
+      <div class="chc-check">✅</div>
+    `;
+    card.onclick = () => toggleChallenge(ch.id);
+    grid.appendChild(card);
+  });
+
+  document.getElementById('btnS5').disabled = S.challenges.length === 0;
+}
+
+function toggleChallenge(id) {
+  const i = S.challenges.indexOf(id);
+  if (i >= 0) {
+    S.challenges.splice(i, 1);
+    document.getElementById(`chc-${id}`)?.classList.remove('sel');
+  } else {
+    if (S.challenges.length >= CFG.maxChallenges) {
+      const old = S.challenges.shift();
+      document.getElementById(`chc-${old}`)?.classList.remove('sel');
+    }
+    S.challenges.push(id);
+    document.getElementById(`chc-${id}`)?.classList.add('sel');
+  }
+  document.getElementById('btnS5').disabled = S.challenges.length === 0;
+}
+
+function skipChallenges() {
+  S.challenges = [];
+  goTo(6);
+}
+
+// ── S6 SETUP ──────────────────────────────────────────────────
+function setupS6() {
+  const challengeNames = S.challenges.map(id => CHALLENGES.find(c => c.id === id)?.name).filter(Boolean).join(' & ');
+  document.getElementById('s6sub').innerHTML =
+    `Here are today's 4 introductions, <strong>${S.name}</strong>.
+     ${S.challenges.length ? `Your story pushes back against <strong>${challengeNames}</strong>.` : ''}
+     Tap any <span style="background:var(--gold-pale);border:1.5px dashed var(--gold-dark);border-radius:4px;padding:1px 6px;color:var(--gold-dark);font-weight:800;">highlighted phrase</span> to swap your wording.`;
+
+  const key = getTplKey();
+  const pool = TEMPLATES[key] || TEMPLATES['passion'] || [];
+  const day = Math.floor(Date.now() / 86400000);
+  S.currentTpls = pickN(pool, 3, day);
+  S.synOverrides = {};
+  renderTemplates();
+}
+
+function renderTemplates() {
+  const wrap = document.getElementById('tplWrap');
+  wrap.innerHTML = '';
+  const labels = ['Option 1 · What You Do','Option 2 · Why You Do It','Option 3 · The Full Picture'];
+
+  S.currentTpls.forEach((fn, ti) => {
+    const raw = fn();
+    const card = document.createElement('div');
+    card.className = 'tpl-card';
+    card.style.animationDelay = `${ti * .12}s`;
+    card.innerHTML = `
+      <div class="tpl-label">${labels[ti] || `Option ${ti+1}`}</div>
+      <div class="tpl-text" id="tpltext-${ti}">${renderFills(resolveTemplate(raw, ti), ti)}</div>
+      <div class="tpl-actions">
+        <button class="btn-copy" id="copy-${ti}" onclick="copyTpl(${ti},this)">📋 Copy</button>
+        <span class="tpl-hint">Tap highlighted words to customize</span>
+      </div>`;
+    wrap.appendChild(card);
+  });
+
+  // Always-present I Help card (index 99)
+  const iHelpRaw = buildIHelpTemplate();
+  const iHelpCard = document.createElement('div');
+  iHelpCard.className = 'tpl-card tpl-ihelp';
+  iHelpCard.style.animationDelay = '0.36s';
+  iHelpCard.innerHTML = `
+    <div class="tpl-label tpl-label-ihelp">✨ The "I Help" Introduction · Always Available</div>
+    <div class="tpl-text" id="tpltext-99">${renderFills(resolveTemplate(iHelpRaw, 99), 99)}</div>
+    <div class="tpl-actions">
+      <button class="btn-copy" id="copy-99" onclick="copyTpl(99,this)">📋 Copy</button>
+      <span class="tpl-hint">Tap highlighted words to customize</span>
+    </div>`;
+  wrap.appendChild(iHelpCard);
+}
+
+// ── TEMPLATE HELPERS ──────────────────────────────────────────
+function getTplKey() {
+  const has = id => S.pillars.includes(id) && (S.cats[id] || []).length > 0;
+  return ['passion','principle','practice'].filter(has).join('+') || 'passion';
+}
+
+function resolveTemplate(raw, ti) {
+  return raw.replace(/\[(\w+)\]/g, (_, token) =>
+    (S.synOverrides[ti]?.[token]) || getDefaultForToken(token)
+  );
+}
+
+function getDefaultForToken(token) {
+  if (token === 'id') return S.activeIdentity?.name || 'Leader';
+  if (token === 'challenges') {
+    if (!S.challenges.length) return 'systemic challenges';
+    return S.challenges.map(id => CHALLENGES.find(c => c.id === id)?.name || id).join(' and ');
+  }
+  const pidMap = { passion:'passion', principle:'principle', practice:'practice', people:'people', products:'products', places:'places' };
+  const pid = pidMap[token];
+  if (!pid || !(S.cats[pid] || []).length) return token;
+  const cat = CATS[pid]?.find(c => c.id === S.cats[pid][0]);
+  return cat?.name || token;
+}
+
+function getSynonymsForToken(token) {
+  if (token === 'id') {
+    if (!S.activeIdentity) return [];
+    return CATS[S.activeIdentity.pillar]?.find(c => c.id === S.activeIdentity.catId)?.idSynonyms || [];
+  }
+  if (token === 'challenges') {
+    return S.challenges.flatMap(id => CHALLENGES.find(c => c.id === id)?.synonyms || []);
+  }
+  const pidMap = { passion:'passion', principle:'principle', practice:'practice', people:'people', products:'products', places:'places' };
+  const pid = pidMap[token];
+  if (!pid || !(S.cats[pid] || []).length) return [];
+  return CATS[pid]?.find(c => c.id === S.cats[pid][0])?.synonyms || [];
+}
+
+function renderFills(text, ti) {
+  // Find tokens in the original template for this ti
+  const rawFn = ti === 99 ? buildIHelpTemplate : (S.currentTpls[ti] || (() => ''));
+  const raw = rawFn();
+  const tokens = [];
+  raw.replace(/\[(\w+)\]/g, (_, t) => { tokens.push(t); return ''; });
+  let result = text;
+  tokens.forEach(token => {
+    const current = S.synOverrides[ti]?.[token] || getDefaultForToken(token);
+    const escaped = current.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    result = result.replace(new RegExp(`(${escaped})`), `<span class="fill" data-token="${token}" data-ti="${ti}">$1</span>`);
+  });
+  setTimeout(() => attachFillClicks(), 30);
+  return result;
+}
+
+function refreshTpl(ti) {
+  const rawFn = ti === 99 ? buildIHelpTemplate : (S.currentTpls[ti] || (() => ''));
+  const el = document.getElementById(`tpltext-${ti}`);
+  if (el) el.innerHTML = renderFills(resolveTemplate(rawFn(), ti), ti);
+}
+
+function attachFillClicks() {
+  document.querySelectorAll('.fill').forEach(el => {
+    el.onclick = e => {
+      e.stopPropagation();
+      openSyn(el, el.dataset.token, parseInt(el.dataset.ti));
+    };
+  });
+}
+
+function buildIHelpTemplate() {
+  const has = id => S.pillars.includes(id) && (S.cats[id] || []).length > 0;
+  const hasPeople = S.pillars.includes('people') && (S.cats['people'] || []).length > 0;
+  const hasChallenges = S.challenges.length > 0;
+
+  if (hasPeople && has('practice') && hasChallenges)
+    return `I help [people] [practice] amid [challenges].`;
+  if (hasPeople && has('practice') && has('passion'))
+    return `I help [people] [practice] through [passion]-driven work.`;
+  if (hasPeople && has('practice') && has('principle'))
+    return `I help [people] [practice] — guided by [principle].`;
+  if (hasPeople && has('practice'))
+    return `I help [people] [practice].`;
+  if (hasPeople && hasChallenges)
+    return `I help [people] navigate [challenges] and reach their full potential.`;
+  if (hasPeople)
+    return `I help [people] grow, lead, and reach their full potential.`;
+  if (has('practice') && hasChallenges)
+    return `I help organizations [practice] amid [challenges].`;
+  if (has('practice') && has('passion'))
+    return `I help organizations [practice] through [passion]-driven work.`;
+  if (has('practice'))
+    return `I help organizations [practice] to drive real results.`;
+  return `I help people grow, navigate change, and reach their full potential.`;
+}
+
+function copyTpl(ti, btn) {
+  const rawFn = ti === 99 ? buildIHelpTemplate : (S.currentTpls[ti] || (() => ''));
+  const plain = resolveTemplate(rawFn(), ti).replace(/<[^>]+>/g, '');
+  navigator.clipboard.writeText(plain).then(() => {
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ── SYNONYM POPOVER ───────────────────────────────────────────
+function openSyn(el, token, ti) {
+  const syns = getSynonymsForToken(token);
+  if (!syns.length) return;
+  const current = S.synOverrides[ti]?.[token] || getDefaultForToken(token);
+  const list = document.getElementById('synList');
+  list.innerHTML = '';
+  syns.forEach(syn => {
+    const opt = document.createElement('div');
+    opt.className = 'syn-opt' + (syn === current ? ' syn-current' : '');
+    opt.textContent = syn;
+    opt.onclick = e => {
+      e.stopPropagation();
+      if (!S.synOverrides[ti]) S.synOverrides[ti] = {};
+      S.synOverrides[ti][token] = syn;
+      closeSyn();
+      refreshTpl(ti);
+    };
+    list.appendChild(opt);
+  });
+  const pop = document.getElementById('synPop');
+  pop.style.display = 'block';
+  const rect = el.getBoundingClientRect();
+  pop.style.left = Math.min(rect.left, window.innerWidth - 300) + 'px';
+  pop.style.top = (rect.bottom + window.scrollY + 6) + 'px';
+}
+
+function closeSyn() {
+  document.getElementById('synPop').style.display = 'none';
+}
+
+// ── UTILS ─────────────────────────────────────────────────────
+function pickN(arr, n, seed) {
+  const copy = [...arr]; const result = []; let s = seed;
+  while (result.length < n && copy.length) {
+    s = (s * 9301 + 49297) % 233280;
+    result.push(copy.splice(Math.floor(s / 233280 * copy.length), 1)[0]);
+  }
+  return result;
+}
+
+// ── START ─────────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>
