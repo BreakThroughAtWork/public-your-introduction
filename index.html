@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Your Story — Undeniable Method</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <div class="sunburst"></div>
+  <div class="wrap">
+    <div class="header">
+      <div class="hdr-eye">Undeniable Method</div>
+      <div class="hdr-title">YOUR STORY</div>
+      <div class="hdr-sub" id="hdrSub">Build your introduction · Free forever</div>
+    </div>
+
+    <div class="prog-wrap">
+      <div class="prog-steps" id="progSteps"></div>
+    </div>
+
+    <div id="screens"></div>
+  </div>
+
+  <!-- synonym popover singleton -->
+  <div class="syn-pop" id="synPop" style="display:none;">
+    <div class="syn-title">CHOOSE YOUR WORDING</div>
+    <span class="syn-close" id="synClose">✕</span>
+    <div id="synList"></div>
+  </div>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
