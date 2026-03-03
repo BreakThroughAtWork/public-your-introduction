@@ -1270,7 +1270,7 @@ function renderTemplates() {
   iHelpCard.className = 'tpl-card tpl-ihelp';
   iHelpCard.style.animationDelay = '0.36s';
   iHelpCard.innerHTML = `
-    <div class="tpl-label tpl-label-ihelp">✨ The "I Help" Introduction · Always Available</div>
+    <div class="tpl-label tpl-label-ihelp">✨ The "I Help" Introduction</div>
     <div class="tpl-text" id="tpltext-99">${renderFills(resolveTemplate(iHelpRaw, 99), 99)}</div>
     <div class="tpl-actions">
       <button class="btn-copy" id="copy-99" onclick="copyTpl(99,this)">📋 Copy</button>
@@ -1367,7 +1367,7 @@ function buildIHelpTemplate() {
   if (hasPeople)
     return `I help [people] grow, lead, and reach their full potential.`;
   if (has('practice') && hasChallenges)
-    return `I help organizations [practice] amid [challenges].`;
+    return `I help organizations with [practice] amid [challenges].`;
   if (has('practice') && has('passion'))
     return `I help organizations [practice] through [passion]-driven work.`;
   if (has('practice'))
